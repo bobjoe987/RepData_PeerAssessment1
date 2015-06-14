@@ -4,16 +4,15 @@ author: "Dave Walters"
 date: "June 14, 2015"
 output:
   html_document:
-    theme: spacelab
+    self_contained: no
 ---
 
-Reproduceible Research Project 1 PA1_template
+Reproducible Research Project 1 PA1_template
 ==============================================
 ###Prerequisites
 ```{r, echo=TRUE}
 library(dplyr)
 library(ggplot2)
-library(knitr)
 setClass("myDate")
 setAs("character","myDate",function(from) format(strptime(from,format="%Y-%m-%d"),"%Y-%m-%d"))
 cls <- c("numeric","myDate","numeric")
@@ -114,8 +113,5 @@ new$wday <- as.factor(ifelse(weekdays(as.Date(new$date)) %in% c("Saturday","Sund
 ggplot(new,aes(x=interval,y=steps)) + geom_line() + facet_wrap(~wday,nrow=2,ncol=1)
 ```
 
-
 ##write knitr file
-```{r, echo=TRUE}
-knit2html("PA1_template.Rmd","PA1_template.html")
-```
+knitr2html("PA1_template.Rmd","PA1_template.html")
